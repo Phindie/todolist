@@ -19,7 +19,7 @@ const initialValue = () => (
     <Edit
       onSave={console.log}
       taskId={faker.random.uuid()}
-      initialValue={faker.lorem.words()}
+      initialName={faker.lorem.words()}     
     />
   </Global>
 );

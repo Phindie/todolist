@@ -55,13 +55,13 @@ const Home = (props) => {
         <nav>
           <List>
             <LinkWrap>
-              <Link fullWidth disabled={activePage === "home"}>
+              <Link fullWidth disabled={activePage === "home"} url="#/">
                 Back to Home
               </Link>
             </LinkWrap>
 
             <LinkWrap>
-              <Link fullWidth disabled={activePage === "add"}>
+              <Link fullWidth disabled={activePage === "add"} url="#/add">
                 Add new item
               </Link>
             </LinkWrap>
