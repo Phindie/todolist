@@ -47,10 +47,22 @@ const Task = (props) => {
 };
 
 const Home = (props) => {
-  const { list, onCheckToggle, onDeleteItem } = props;
+  const {
+    list,
+    onCheckToggle,
+    onDeleteItem,
+    userName,
+    onLogin,
+    onUserClick,
+  } = props;
 
   return (
-    <Layout activePage="home">
+    <Layout
+      activePage="home"
+      userName={userName}
+      onLogin={onLogin}
+      onUserClick={onUserClick}
+    >
       <List>
         {list.map(({ id, name, checked }) => (
           <Task

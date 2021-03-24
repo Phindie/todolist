@@ -40,6 +40,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+    if (loaded) {
       window.localStorage.setItem("list", JSON.stringify(list));
     }
   }, [list, loaded]);

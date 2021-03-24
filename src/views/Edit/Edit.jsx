@@ -17,7 +17,7 @@ const StyledButton = styled(Button)`
 `;
 
 const Edit = (props) => {
-  const { onSave, initialName, taskId } = props;
+  const { onSave, initialName, taskId,userName, onLogin, onUserClick } = props;
   const [name, setName] = useState(initialName || "");
 
   const handleTextChange = (event) => {
@@ -31,7 +31,9 @@ const Edit = (props) => {
   };
 
   return (
-    <Layout activePage="edit">
+    <Layout activePage="edit"  userName={userName}
+    onLogin={onLogin}
+    onUserClick={onUserClick}>
       <Form onSubmit={handleSubmit}>
         <TextField
           onChange={handleTextChange}
