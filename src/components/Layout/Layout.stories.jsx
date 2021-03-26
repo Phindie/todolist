@@ -10,8 +10,7 @@ const config ={
 export default config;
 
 const MOCK_ACTIONS ={
-    onLogin: () => console.log('onLogin')
-    onAccountClick: () => console.log('onAccountClick')
+    onUserClick: () => console.log('onUserClick')
 }
 
 const Home = () => (
@@ -23,7 +22,7 @@ const Home = () => (
 
 const LoggedIn = () => (
     <Global>
-     <Layout activePage='home'userName ='Phindi' {...MOCK_ACTIONS}>{faker.lorem.paragraphs(5)}</Layout>
+     <Layout activePage='home'userName ='Phindi Nqanqaru' {...MOCK_ACTIONS}>{faker.lorem.paragraphs(5)}</Layout>
      </Global>
  );
 

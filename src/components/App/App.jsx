@@ -22,6 +22,7 @@ const EditWrapper = (props) => {
 const App = () => {
   const [loaded, setLoaded] = useState(false);
   const [list, setList] = useState([]);
+  const [userObject, setUserObject] = useState()
 
   useEffect(() => {
     const listAsString = window.localStorage.getItem("list");
@@ -32,10 +33,22 @@ const App = () => {
     setLoaded(true);
 
     identity.init();
-    const userObj = identity.currentUser();
+    const initialUserObject = identity.currentUser();
+    setUserObject(initialUserObject|| null)
 
-    if (!userObj) {
-      identity.open();
+    identity.on('login', () =>{
+    const initialUserObject = identity.currentUser();
+    setUserObject(initialUserObject|| null)
+  
+    })
+  
+    identity.on('logout', () => {
+      setUserObject(null)
+    })
+
+    return () => {
+      identity.off('login')
+      identity.off('logout')
     }
   }, []);
 
@@ -82,7 +95,9 @@ const App = () => {
     window.location.replace("/");
   };
 
+const handleOpenIdentity = () => identity.open();
 
+const userName =userObject ? userObject.user_metadata.full_name : null;
 
   return (
     <BrowserRouter>
@@ -93,9 +108,8 @@ const App = () => {
             <EditWrapper
               list={list}
               onSave={handleEditItem}
-              userName={null}
-              onLogin={console.log}
-              onUserClick={console.log}
+              userName={userName}
+              onUserClick={handleOpenIdentity}
             />
           }
         />
@@ -104,26 +118,24 @@ const App = () => {
           children={
             <Add
               onSave={handleAddItem}
-              userName={null}
-              onLogin={console.log}
-              onUserClick={console.log}
+              userName={userName}
+              onUserClick={handleOpenIdentity}
             />
           }
         />
 
-        <Route path="/">
-          children=
-          {
+        <Route path="/"
+          children={
             <Home
               list={list}
               onCheckToggle={handleCheckToggle}
               onDeleteItem={handleDeleteItem}
-              userName={null}
-              onLogin={console.log}
-              onUserClick={console.log}
+              userName={userName}
+              onUserClick={handleOpenIdentity}
             />
+            
           }
-        </Route>
+        />
       </Switch>
     </BrowserRouter>
   );

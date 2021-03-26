@@ -52,7 +52,6 @@ const Home = (props) => {
     onCheckToggle,
     onDeleteItem,
     userName,
-    onLogin,
     onUserClick,
   } = props;
 
@@ -60,7 +59,6 @@ const Home = (props) => {
     <Layout
       activePage="home"
       userName={userName}
-      onLogin={onLogin}
       onUserClick={onUserClick}
     >
       <List>

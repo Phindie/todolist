@@ -16,7 +16,7 @@ const StyledButton = styled(Button)`
 `;
 
 const Add = (props) => {
-  const { onSave, userName, onLogin, onUserClick } = props;
+  const { onSave, userName, onUserClick } = props;
   const [name, setName] = useState("");
 
   const handleTextChange = (event) => {
@@ -30,9 +30,11 @@ const Add = (props) => {
   };
 
   return (
-    <Layout activePage="add"  userName={userName}
-    onLogin={onLogin}
+    <Layout 
+    activePage="add"  
+    userName={userName}
     onUserClick={onUserClick}>
+      
       <Form onSubmit={handleSubmit}>
         <TextField
           onChange={handleTextChange}
