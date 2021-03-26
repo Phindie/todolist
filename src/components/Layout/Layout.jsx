@@ -52,15 +52,16 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const Home = (props) => {
-  const { children, activePage, userName, onLogin, onUserClick } = props;
-
+const Layout = (props) => {
+  const { children, activePage, userName, onUserClick } = props;
+console.log(onUserClick)
   return (
     <>
       <Header>
         <Title>{PAGE_TITLE_MAP[activePage]}</Title>
         <StyledButton
-          onClick={userName ? onUserClick : onLogin}
+          onClick={onUserClick}
+        
           startIcon={userName ? <AccountCircle /> : undefined}
         >
           {userName || "Log in"}
@@ -90,4 +91,4 @@ const Home = (props) => {
   );
 };
 
-export default Home;
+export default Layout;
